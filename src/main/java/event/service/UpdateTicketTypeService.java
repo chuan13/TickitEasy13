@@ -2,11 +2,20 @@ package event.service;
 
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import event.dao.TicketTypesDAO;
 import event.object.dto.updateevent.OneTicketTypeDTO;
 import event.object.po.TicketTypesPO;
 
+@Service
+@Transactional
 public class UpdateTicketTypeService {
+	
+	@Autowired
+	private TicketTypesDAO ticketTypesDAO;
 
 	/*
 	 * method 名稱：validate
@@ -61,7 +70,6 @@ public class UpdateTicketTypeService {
 		ticketTypesPO.setEndSaleTime(oneTicketTypeDTO.getEndSaleTime());
 
 		// 3.2 呼叫 DAO，傳入 TicketTypesPO
-		TicketTypesDAO ticketTypesDAO = new TicketTypesDAO();
 		try {
 			Boolean result = ticketTypesDAO.updateTicketTypeById(ticketTypesPO);
 			if (!result) {
