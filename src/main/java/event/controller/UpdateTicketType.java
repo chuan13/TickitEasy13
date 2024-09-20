@@ -3,7 +3,7 @@ package event.controller;
 import java.io.IOException;
 
 import event.object.dto.updateevent.OneTicketTypeDTO;
-import event.service.UpdateTicketTypeService;
+import event.service.TicketTypeService;
 import event.util.TimestampUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -18,7 +18,7 @@ public class UpdateTicketType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private TimestampUtil timestampUtil;
-	private UpdateTicketTypeService updateTicketTypeService;
+	private TicketTypeService updateTicketTypeService;
 
     public UpdateTicketType() {
         super();
@@ -28,7 +28,7 @@ public class UpdateTicketType extends HttpServlet {
     public void init() throws ServletException {
     	super.init();
     	timestampUtil = new TimestampUtil();
-    	updateTicketTypeService = new UpdateTicketTypeService();
+    	updateTicketTypeService = new TicketTypeService();
     }
 
     @Override

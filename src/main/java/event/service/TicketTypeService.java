@@ -1,6 +1,7 @@
 package event.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import event.object.po.TicketTypesPO;
 
 @Service
 @Transactional
-public class UpdateTicketTypeService {
+public class TicketTypeService {
 	
 	@Autowired
 	private TicketTypesDAO ticketTypesDAO;
@@ -84,5 +85,36 @@ public class UpdateTicketTypeService {
 		// 3.3 回傳結果
 		return true;
 	}
+	
+	/*
+	 * method 名稱：readAllTicketTypes
+	 * 用途：查詢所有票種：Service
+	 * @param：（無）
+	 * @return：List<TicketTypesPO>
+	*/
+	public List<TicketTypesPO> readAllTicketTypes() {
+		return ticketTypesDAO.readAll();
+	}
+	
+	/*
+	 * method 名稱：readOneTicketType
+	 * 用途：查詢單一票種：Service
+	 * @param：Integer（TicketTypeID）
+	 * @return：TicketTypesPO
+	*/
+	public TicketTypesPO readOneTicketType(Integer TicketTypeID) {
+		return ticketTypesDAO.selectOneTicketTypeById(TicketTypeID);
+	}
+	
+	/*
+	 * method 名稱：searchIfOnlyTicketTypeByPO
+	 * 用途：查詢單一票種是否為該場次的唯一票種：Service
+	 * @param：TicketTypesPO
+	 * @return：Boolean
+	*/
+	public Boolean searchIfOnlyTicketTypeByPO(TicketTypesPO ticketType) {
+		return ticketTypesDAO.selectIfOnlyTicketTypeByPO(ticketType);
+	}
+	
 
 }
