@@ -56,9 +56,4 @@ public class RootAppConfig {
 		txMgr.setSessionFactory(sessionFactory().getObject());
 		return txMgr;
 	}
-	
-	@Bean
-    public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
-        return new HiddenHttpMethodFilter();
-    }
 }

@@ -40,7 +40,7 @@
         <span id="deleteMessage"></span>
     </form>
 </div>
-<script src="../jslib/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function() {
         let mustMark = '<span class="mustMark">*</span>';
