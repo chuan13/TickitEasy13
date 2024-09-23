@@ -116,5 +116,13 @@ public class TicketTypeService {
 		return ticketTypesDAO.selectIfOnlyTicketTypeByPO(ticketType);
 	}
 	
-
+	/*
+	 * method 名稱：searchIfOnlyTicketTypeByPO
+	 * 用途：查詢單一票種是否為該場次的唯一票種：Service
+	 * @param：TicketTypesPO
+	 * @return：Boolean
+	*/
+	public Boolean delete(Integer ticketTypeID) {
+		return ticketTypesDAO.deleteTicketTypeById(ticketTypeID);
+	}
 }
