@@ -46,6 +46,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 	public StandardServletMultipartResolver multipartResolver() {
 		return new StandardServletMultipartResolver();
 	}
+
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -76,6 +77,7 @@ public class WebAppConfig implements WebMvcConfigurer {
 		return ms;
 	}
 	
+
 	@Bean
 	public InternalResourceViewResolver irViewResolver() {
 		InternalResourceViewResolver irv = new InternalResourceViewResolver("/WEB-INF/pages/",".jsp");
@@ -102,6 +104,5 @@ public class WebAppConfig implements WebMvcConfigurer {
 		registry.addInterceptor(lci).addPathPatterns("/**");
 	}
 
-	
 	
 }
