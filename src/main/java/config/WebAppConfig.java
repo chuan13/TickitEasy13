@@ -1,7 +1,6 @@
 package config;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -53,12 +52,15 @@ public class WebAppConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
 		registry.addResourceHandler("/mycss/**").addResourceLocations("/WEB-INF/resources/mycss/");
 		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/resources/js/");
+		
+		// 繞行、取得在 WEB-INF 底下的靜態資源
+		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/pages/");
 	}
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "membersmain.controller");
-		registry.addViewController("/wonderland").setViewName("loginSystem");
+//		registry.addRedirectViewController("/", "membersmain.controller");
+//		registry.addViewController("/wonderland").setViewName("loginSystem");
 	}
 
 	@Bean
@@ -76,10 +78,17 @@ public class WebAppConfig implements WebMvcConfigurer {
 	
 	@Bean
 	public InternalResourceViewResolver irViewResolver() {
-		InternalResourceViewResolver irv1 = new InternalResourceViewResolver("/WEB-INF/pages/",".jsp");
-		irv1.setOrder(6);
-		return irv1;
+		InternalResourceViewResolver irv = new InternalResourceViewResolver("/WEB-INF/pages/",".jsp");
+		irv.setOrder(1);
+		return irv;
 	}
+//	@Bean
+//	public InternalResourceViewResolver irViewResolverHtml() {
+//	    InternalResourceViewResolver irv = new InternalResourceViewResolver("/WEB-INF/pages/", ".html");
+//	    irv.setOrder(2); // 在 JSP 之後
+//	    return irv;
+//	}
+	// 沒用？
 	
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

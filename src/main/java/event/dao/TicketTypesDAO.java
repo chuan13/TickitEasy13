@@ -19,10 +19,11 @@ public class TicketTypesDAO {
 	
     @PostConstruct
     public void init() {
-    	System.out.println("TicketTypesDAO init()");
-        if (sessionFactory == null) {
-        	System.out.println("在 init()，sessionFactory 目前為 null");
-        }
+    	// 測試用
+//    	System.out.println("TicketTypesDAO init()");
+//        if (sessionFactory == null) {
+//        	System.out.println("在 init()，sessionFactory 目前為 null");
+//        }
     }
 
 	/*

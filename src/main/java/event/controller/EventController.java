@@ -30,7 +30,7 @@ public class EventController {
 	
 	@GetMapping("/event/CreateEvent")
 	public String createEventPage() {
-		return "CreateEvent";
+		return "forward:/event/CreateEvent.html";
 	}
 	
 	@PostMapping

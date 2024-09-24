@@ -30,7 +30,7 @@ public class TicketTypeController {
 	public String readAllTicketTypes(Model model) {
 		List<TicketTypesPO> ticketTypeslist = ticketTypeService.readAllTicketTypes();
 		model.addAttribute("ticketTypes", ticketTypeslist);
-		return "/event/ReadAllTicketTypes";
+		return "event/ReadAllTicketTypes";
 	}
 	
 	@GetMapping("/event/TicketType/{ticketTypeID}")
@@ -45,14 +45,14 @@ public class TicketTypeController {
 		Boolean isOnly = true;
 		model.addAttribute("isOnly", isOnly);
 		
-		return "/event/TicketType";
+		return "event/TicketType";
 	}
 	
 	@PostMapping("/event/DeleteTicketTypeMvc")
 	public String deleteTicketType(Model model, @RequestParam("ticketTypeID") Integer ticketTypeID) {
 		Boolean result = ticketTypeService.delete(ticketTypeID);
 		model.addAttribute("result", result);
-		return "/event/DeleteTicketTypeResult";
+		return "event/DeleteTicketTypeResult";
 	}
 	
 	@PostMapping("/event/UpdateTicketTypeMvc")
@@ -84,7 +84,7 @@ public class TicketTypeController {
 		String validate = ticketTypeService.validate(oneTicketTypeDTO);
 		if (!(validate == "")) {
 			model.addAttribute("result", validate);
-			return "/event/UpdateTicketTypeResult";
+			return "event/UpdateTicketTypeResult";
 		}
 
 
@@ -95,10 +95,10 @@ public class TicketTypeController {
 		// 4. setAttribute(成功／失敗)，回傳給 View 顯示結果
 		if (updateTicketTypeResult) {
 			model.addAttribute("result", "修改成功！");
-			return "/event/UpdateTicketTypeResult";
+			return "event/UpdateTicketTypeResult";
 		} else {
 			model.addAttribute("result", "發生 SQLException");
-			return "/event/UpdateTicketTypeResult";
+			return "event/UpdateTicketTypeResult";
 		}
 	}
 }
